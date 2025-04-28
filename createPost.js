@@ -2,9 +2,23 @@ document.getElementById("createPostForm").addEventListener("submit", function(ev
     event.preventDefault();
 
     // Get current logged-in user
-    const loggedInUser = JSON.parse(localStorage.getItem("loggedInUser"));
+    const authToken = localStorage.getItem("authToken");
+    const username = localStorage.getItem("loggedInUsername");
+
+    if (!authToken || !username) {
+       alert("Please log in first.");
+        window.location.href = "login.html";
+        return;
+    }
+
+    // Load user from users array
+    const users = JSON.parse(localStorage.getItem("users")) || [];
+    const loggedInUser = users.find(user => user.username === username);
+
     if (!loggedInUser) {
-        alert("You must be logged in to create a post.");
+        alert("User not found. Please log in again.");
+        localStorage.removeItem("authToken");
+        localStorage.removeItem("loggedInUsername");
         window.location.href = "login.html";
         return;
     }
