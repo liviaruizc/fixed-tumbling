@@ -1,17 +1,13 @@
-document.getElementById("createPostForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-
-    // Get current logged-in user
+document.addEventListener("DOMContentLoaded", function () {
     const authToken = localStorage.getItem("authToken");
     const username = localStorage.getItem("loggedInUsername");
 
     if (!authToken || !username) {
-       alert("Please log in first.");
+        alert("Please log in first.");
         window.location.href = "login.html";
         return;
     }
 
-    // Load user from users array
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const loggedInUser = users.find(user => user.username === username);
 
@@ -23,66 +19,53 @@ document.getElementById("createPostForm").addEventListener("submit", function(ev
         return;
     }
 
-    // Get post data from form
-    const title = document.getElementById("postTitle").value;
-    const content = document.getElementById("postContent").value;
-    const date = new Date().toLocaleDateString();
-    const imageFile = document.getElementById("postImage")?.files[0];
+    document.getElementById("createPostForm").addEventListener("submit", function (event) {
+        event.preventDefault();
 
-    if (imageFile) {
-        // 🚀 Secure file validation
-        if (!imageFile.type.startsWith("image/")) {
-            alert("Please upload a valid image file (jpg, jpeg, png).");
-            return;
-        }
+        const title = document.getElementById("postTitle").value.trim();
+        const content = document.getElementById("postContent").value.trim();
+        const date = new Date().toLocaleDateString();
+        const imageFile = document.getElementById("postImage")?.files[0];
 
-        if (imageFile.size > 2 * 1024 * 1024) { // 2MB
-            alert("Image too large! Please upload a file smaller than 2MB.");
-            return;
-        }
+        if (imageFile) {
+            if (!imageFile.type.startsWith("image/")) {
+                alert("Please upload a valid image file (jpg, jpeg, png).");
+                return;
+            }
 
-        const reader = new FileReader();
-        reader.onload = function(event) {
-            const imageData = event.target.result;
+            if (imageFile.size > 2 * 1024 * 1024) {
+                alert("Image too large! Please upload a file smaller than 2MB.");
+                return;
+            }
 
-            const newPost = { title, content, date, image: imageData };
+            const reader = new FileReader();
+            reader.onload = function (event) {
+                const imageData = event.target.result;
 
-            // Save to loggedInUser
+                const newPost = { title, content, date, image: imageData };
+
+                loggedInUser.posts = loggedInUser.posts || [];
+                loggedInUser.posts.push(newPost);
+
+                // Save back to users array
+                users[users.findIndex(user => user.username === loggedInUser.username)] = loggedInUser;
+                localStorage.setItem("users", JSON.stringify(users));
+
+                alert("Post created successfully.");
+                window.location.href = "profile.html";
+            };
+            reader.readAsDataURL(imageFile);
+        } else {
+            const newPost = { title, content, date, image: null };
+
             loggedInUser.posts = loggedInUser.posts || [];
             loggedInUser.posts.push(newPost);
-            localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
 
-            // Also update users array
-            let users = JSON.parse(localStorage.getItem("users")) || [];
-            const userIndex = users.findIndex(user => user.username === loggedInUser.username);
-
-            if (userIndex !== -1) {
-                users[userIndex].posts = loggedInUser.posts;
-                localStorage.setItem("users", JSON.stringify(users));
-            }
+            users[users.findIndex(user => user.username === loggedInUser.username)] = loggedInUser;
+            localStorage.setItem("users", JSON.stringify(users));
 
             alert("Post created successfully.");
             window.location.href = "profile.html";
-        };
-        reader.readAsDataURL(imageFile);
-    } else {
-        // No image case
-        const newPost = { title, content, date, image: null };
-
-        loggedInUser.posts = loggedInUser.posts || [];
-        loggedInUser.posts.push(newPost);
-        localStorage.setItem("loggedInUser", JSON.stringify(loggedInUser));
-
-        let users = JSON.parse(localStorage.getItem("users")) || [];
-        const userIndex = users.findIndex(user => user.username === loggedInUser.username);
-
-        if (userIndex !== -1) {
-            users[userIndex].posts = loggedInUser.posts;
-            localStorage.setItem("users", JSON.stringify(users));
         }
-
-        alert("Post created successfully.");
-        window.location.href = "profile.html";
-    }
+    });
 });
-
