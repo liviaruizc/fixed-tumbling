@@ -1,0 +1,319 @@
+/* General Styling */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: #fff;
+  color: #2f0e4e;
+}
+
+/* Header */
+header {
+  background: #6a0dad;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #fdee0e;
+}
+
+nav a {
+  color: white;
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 80px 20px;
+  background: linear-gradient(to right, #f6e9ff, #ffffff);
+  text-align: center;
+}
+
+.hero-text {
+  max-width: 600px;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  margin-bottom: 20px;
+  color: #6a0dad;
+}
+
+.hero p {
+  font-size: 1.2rem;
+  margin-bottom: 30px;
+  color: #4b2677;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 22px;
+  background-color: #fdee0e;
+  color: #2f0e4e;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: 600;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: background 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #f6db00;
+}
+
+/* Form Section */
+.form-section {
+  max-width: 500px;
+  margin: 60px auto;
+  background: #faf5ff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.form-section h2 {
+  color: #6a0dad;
+  margin-bottom: 25px;
+}
+
+form input {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+form input:focus {
+  border-color: #6a0dad;
+  outline: none;
+}
+
+form button {
+  background-color: #fdee0e;
+  color: #2f0e4e;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+form button:hover {
+  background-color: #f6db00;
+}
+
+/* Comments section */
+#commentsSection {
+  margin-top: 30px;
+  text-align: left;
+}
+
+/* Profile */
+.profile-container {
+  max-width: 900px;
+  margin: 60px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 20px;
+}
+
+.profile-card {
+  background: #faf5ff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.avatar {
+  width: 100px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 3px solid #6a0dad;
+}
+
+.bio {
+  font-style: italic;
+  color: #4b2677;
+  margin: 10px 0 20px;
+}
+
+.info p {
+  margin: 6px 0;
+  color: #333;
+}
+
+.posts-section {
+  background: #fffbea;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+
+.posts-section h3 {
+  color: #6a0dad;
+  margin-bottom: 20px;
+}
+
+.post {
+  margin-bottom: 25px;
+}
+
+.post h4 {
+  margin-bottom: 5px;
+  color: #2f0e4e;
+}
+
+.post p {
+  margin: 0;
+  color: #555;
+}
+
+/* Button Styles */
+button {
+  background-color: #fdee0e; /* Default yellow background */
+  color: #2f0e4e; /* Dark text for visibility */
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect for all buttons */
+button:hover {
+  background-color: #f6db00; /* Slightly darker yellow */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+/* Focus effect for buttons */
+button:focus {
+  outline: none; /* Remove outline on focus */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Specific Button Styles */
+
+/* Save Button (Green color to indicate success) */
+#saveProfileBtn {
+  background-color: #28a745; /* Green color for saving */
+}
+
+#saveProfileBtn:hover {
+  background-color: #218838; /* Darker green on hover */
+}
+
+/* Upload Image Button (Blue for action) */
+#uploadImage {
+  background-color: #007bff; /* Blue for upload */
+  color: white;
+  padding: 10px 18px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+#uploadImage:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+/* Edit Profile Button (Yellow for editing) */
+#editProfileBtn {
+  background-color: #ffc107; /* Yellow color for edit */
+}
+
+#editProfileBtn:hover {
+  background-color: #e0a800; /* Darker yellow on hover */
+}
+
+/* For file input button, style it as a regular button */
+#uploadImage {
+  display: inline-block;
+  background: none;
+  font-size: 16px;
+  color: #007bff;
+  padding: 0;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+#uploadImage:hover {
+  text-decoration: none;
+}
+
+/* Style the buttons inside the profile card to be more aligned and neat */
+.profile-card button {
+  margin-top: 15px; /* Spacing for the buttons */
+  display: inline-block;
+}
+
+form textarea {
+  display: block;
+  width: 100%;
+  margin-bottom: 15px;
+  padding: 12px;
+  font-size: 1rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  resize: vertical;
+}
+
+form textarea:focus {
+  border-color: #6a0dad;
+  outline: none;
+}
+
+.post-image {
+  width: 100%;
+  max-width: 150px;
+  height: auto;
+  margin-top: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.logout-btn {
+  background-color: #fdee0e;
+  color: #2f0e4e;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  text-decoration: none;
+}
+
+.logout-btn:hover {
+  background-color: #f6db00;
+}
+
+
+
+
+
+

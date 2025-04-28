@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Create Post - Tumbling</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="createPost.js" defer></script>
+</head>
+<body>
+<header>
+  <div class="logo">📝 Tumbling</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="profile.html">Profile</a>
+    <a href="login.html" id="logoutBtn" class="logout-btn" style="display: none;">Logout</a>
+  </nav>
+</header>
+
+<section class="form-section">
+  <h2>Create a New Post</h2>
+  <form id="createPostForm">
+    <input type="text" id="postTitle" placeholder="Post Title" required />
+    <textarea id="postContent" placeholder="Post Content" required rows="6"></textarea>
+    <input type="file" id="postImage" accept="image/*">
+    <button type="submit">Create Post</button>
+  </form>
+</section>
+<script src="global.js" defer></script>
+</body>
+</html>
